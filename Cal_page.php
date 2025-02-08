@@ -81,11 +81,11 @@ if ($ses == TRUE) {
             </form>
         </div>
         <h1>Pieteikties laimīgajai stundai</h1>
-        <h2>4. Ieraksti pārbaudes darba nosaukumu</h2>
+        <h2>4. Ieraksti pārbaudes darba nosaukumu</h2> <!-- student enters the test name -->
         <div class="input_mid">
-            <input type="text" class="pd_name" placeholder="Pārbaudes darba nosaukums" title="Ieraksti pārbaudes darba nosaukumu">
+            <input type="text" class="pd_name" placeholder="Pārbaudes darba nosaukums" title="Ieraksti pārbaudes darba nosaukumu" name="pd_name">
         </div>
-        <h2>5. Izvēlies datumu</h2>
+        <h2>5. Izvēlies datumu</h2> <!-- contains fridays for witch the user applies for -->
         <div class="date_list" id="scroll_style">
             <?php foreach ($fridays as $friday): ?>
                 <div class="date">
@@ -93,7 +93,11 @@ if ($ses == TRUE) {
                         <h3><?php echo $friday; ?></h3>
                         <h4>10.stunda konferenču zāle</h4>
                         <p class="aizpildīts">Aizpildīts</p>
-                        <button type="submit" class="button">Pieteikties</button>
+                        <form action="config/apply.php" method="post">
+                            <input type="hidden" name="stunda" value="10.stunda konferenču zāle">
+                            <input type="hidden" name="pd_name" class="pd_name" placeholder="Pārbaudes darba nosaukums" title="Ieraksti pārbaudes darba nosaukumu">
+                            <button type="submit" class="button">Pieteikties</button>
+                        </form>
                     </div>
                 </div>
                 <div class="date">
@@ -101,14 +105,18 @@ if ($ses == TRUE) {
                         <h3><?php echo $friday; ?></h3>
                         <h4>11.stunda konferenču zāle</h4>
                         <p class="vidēji_aizpildīts">Vidēji aizpildīts</p>
-                        <button type="submit" class="button">Pieteikties</button>
+                        <form action="config/apply.php" method="post">
+                            <input type="hidden" name="stunda" value="11.stunda konferenču zāle">
+                            <input type="hidden" name="pd_name" class="pd_name" placeholder="Pārbaudes darba nosaukums" title="Ieraksti pārbaudes darba nosaukumu">
+                            <button type="submit" class="button">Pieteikties</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
         </br>
         </br>
-        <div class="bottom_bar">
+        <div class="bottom_bar"> <!-- bottom bar with redirects to other school pages -->
             <a href="Reg_Page.php">Mani pietiekumi</a>
             <a href="https://stunduizmainas.marupe.edu.lv/" target="_blank">Stundu izmaiņas</a>
             <a href="https://stunduizmainas.marupe.edu.lv/konsultacijas/" target="_blank">Konsultāciju grafiks</a>
